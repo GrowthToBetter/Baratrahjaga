@@ -23,7 +23,7 @@ export const CarouselLoadingSkeleton = memo(() => (
           </div>
         </div>
       </div>
-      
+
       {/* Loading indicators */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
         <div className="flex justify-center gap-2">
@@ -60,12 +60,12 @@ export const PortfolioLoadingSkeleton = memo(() => (
             <div className="w-16 h-4 bg-blue-300/30 rounded animate-pulse"></div>
           </div>
         </div>
-        
+
         <div className="space-y-4 mb-6">
           <div className="h-12 bg-gradient-to-r from-white/20 to-blue-100/20 rounded mx-auto w-64 animate-pulse"></div>
           <div className="h-12 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded mx-auto w-72 animate-pulse"></div>
         </div>
-        
+
         <div className="space-y-2 max-w-2xl mx-auto">
           <div className="h-4 bg-slate-300/20 rounded mx-auto w-full animate-pulse"></div>
           <div className="h-4 bg-slate-300/20 rounded mx-auto w-3/4 animate-pulse"></div>
@@ -118,10 +118,10 @@ export const ProjectCardSkeleton = memo(({ index }: { index: number }) => (
               <div className="w-20 h-4 bg-blue-400/30 rounded animate-pulse" />
             </div>
           </div>
-          
+
           {/* Progress Indicator */}
           <div className="w-12 h-1 bg-slate-700 rounded-full overflow-hidden">
-            <div 
+            <div
               className="h-full bg-gradient-to-r from-blue-500/50 to-cyan-500/50 rounded-full animate-pulse"
               style={{ animationDelay: `${index * 0.1}s` }}
             />
@@ -135,3 +135,7 @@ export const ProjectCardSkeleton = memo(({ index }: { index: number }) => (
     </div>
   </div>
 ));
+
+CarouselLoadingSkeleton.displayName = "CarouselLoadingSkeleton";
+ProjectCardSkeleton.displayName = "ProjectCardSkeleton";
+PortfolioLoadingSkeleton.displayName = "PortfolioLoadingSkeleton";
