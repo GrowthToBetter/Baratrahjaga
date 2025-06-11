@@ -1,6 +1,6 @@
 import Link from "next/link";
 
- export const contact = "6285106655664"
+export const contact = "6285106655664";
 export default function Footer() {
   return (
     <footer className="border-t backdrop-blur-md bg-gradient-to-b from-[#800000] to-black border-b border-white/10 text-white">
@@ -10,7 +10,7 @@ export default function Footer() {
             <h3 className="text-lg font-semibold">Fruit Supplier</h3>
             <p className="text-sm text-muted-foreground">
               Menghubungkan supplier pada instansi resmi, mengelola dengan
-                system management yang efisien dan efektif.
+              system management yang efisien dan efektif.
             </p>
           </div>
 
@@ -20,31 +20,8 @@ export default function Footer() {
               <li>
                 <Link
                   href="/"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                >
+                  className="text-sm text-muted-foreground hover:text-foreground">
                   Beranda
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/Pengembang"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                >
-                  Tentang
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-sm font-semibold">Bantuan</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/Pengembang"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                >
-                  Pengembang
                 </Link>
               </li>
             </ul>
@@ -62,8 +39,8 @@ export default function Footer() {
 
         <div className="pt-6 border-t text-center text-sm text-muted-foreground">
           <p>
-            &copy; {new Date().getFullYear()} Baratrahjaga . All
-            rights reserved.
+            &copy; {new Date().getFullYear()} Baratrahjaga . All rights
+            reserved.
           </p>
         </div>
       </div>

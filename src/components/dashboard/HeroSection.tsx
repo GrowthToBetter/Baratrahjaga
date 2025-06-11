@@ -32,11 +32,11 @@ const HeroSection = memo(() => {
             }
             transition={{ duration: 0.8 }}
             className="space-y-4 sm:space-y-6 order-2 lg:order-1">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 leading-tight">
+            <h1 className="text-2xl text-center lg:text-left sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 leading-tight">
               Jean Richnerd Rantabaratrahjaga
             </h1>
 
-            <p className="text-sm sm:text-base lg:text-lg text-slate-200 leading-relaxed max-w-xl">
+            <p className="text-sm sm:text-base text-center lg:text-left lg:text-lg text-slate-200 leading-relaxed max-w-full">
               Seorang{" "}
               <strong className="text-blue-300">Fullstack Developer</strong>{" "}
               dari <strong className="text-cyan-300">SMK Telkom Malang</strong>.
@@ -45,13 +45,13 @@ const HeroSection = memo(() => {
               membangun aplikasi dengan fokus pada performa dan skalabilitas.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
               <Button
                 size="lg"
                 className="bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200 text-sm sm:text-base"
                 asChild>
                 <Link href="#portfolio" prefetch={true}>
-                  Lihat Portofolio
+                  Lihat Sertifikat
                 </Link>
               </Button>
               <Button
