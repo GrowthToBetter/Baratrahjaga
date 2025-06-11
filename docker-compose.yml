@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    ports:
+      - "3180:3180"
+    expose:
+      - "3180"
+    env_file:
+      - .env
+    restart: always
