@@ -19,7 +19,7 @@ export default auth(async function middleware(req) {
         req.nextUrl
       )
     );
-  }
+  } 
 
   if (isOnAdminPage && req.auth?.user?.role !== "SUPERADMIN") {
     return NextResponse.redirect(new URL("/", req.nextUrl));
