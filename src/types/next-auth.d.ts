@@ -1,6 +1,6 @@
 import { DefaultSession, DefaultUser } from "next-auth"
 import { JWT as DefaultJWT } from "next-auth/jwt"
-import { role_user } from "@/generated/prisma"
+import { role_user } from "@prisma/client"
 
 // 1. Extend the User object returned in the session
 declare module "next-auth" {

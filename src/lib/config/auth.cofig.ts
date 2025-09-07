@@ -2,7 +2,7 @@ import { NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
 import { env } from "@/env";
 import { prisma } from "@/lib/prisma";
-import { Role } from "@/generated/prisma";
+import { Role } from "@prisma/client";
 
 export const authConfig = {
   providers: [
