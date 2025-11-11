@@ -10,24 +10,22 @@ datasource db {
 
 model User {
   id            String    @id @default(uuid())
-  name          String? // optional seperti di model baru
+  name          String?
   email         String?   @unique
   emailVerified DateTime?
-  image         String? // menggantikan photo_profile
+  image         String?
 
-  address String? // bisa diasumsikan pengganti school_id atau alamat umum
+  address String?
 
-  // Relasi tambahan dari model baru
   accounts Account[]
   sessions Session[]
 
-  // Relasi dari model lama yang tetap dipertahankan
   project      project[]
-  classes      String? // kelas
+  classes      String?
   show         Boolean             @default(false)
-  years_old    String? // umur
-  cover        String? // yang ditampilkan di halaman awal
-  school_id    String? // ID sekolah
+  years_old    String?
+  cover        String?
+  school_id    String?
   school       school_information?
   work_status  String?
   skill        type_skill[]
@@ -73,7 +71,7 @@ model VerificationToken {
 
 model type_skill {
   id      String  @id @default(uuid())
-  name    String //untuk mengidentifikasi seperti software or hardware
+  name    String
   user_id String
   user    User    @relation(references: [id], fields: [user_id])
   skill   skill[]
@@ -86,8 +84,6 @@ model skill {
   name    String
   grade   grade_skill @default(Beginner)
 }
-
-
 
 model school_information {
   id       String  @id @default(uuid())
@@ -115,10 +111,26 @@ model product {
 }
 
 model category {
-  id      String    @id @default(uuid())
-  name    String
-  cover   String
-  product product[]
+  id          String        @id @default(uuid())
+  name        String
+  cover       String
+  product     product[]
+  certificate certificate[]
+}
+
+model certificate {
+  id           String    @id @default(uuid())
+  name         String
+  issuer       String?
+  path         String    // Cloudinary URL for certificate image/PDF (preview URL for PDFs)
+  download_url String?   // Added separate download URL for original PDF
+  file_type    String?   // File type (pdf or image)
+  desc         String?
+  issued_date  String?
+  category_id  String?
+  category     category? @relation(references: [id], fields: [category_id], onDelete: Cascade)
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
 }
 
 model social_media {
@@ -144,7 +156,6 @@ enum Role {
   ADMIN
   USER
 }
-
 
 enum grade_skill {
   Beginner

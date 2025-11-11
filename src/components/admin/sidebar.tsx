@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { LayoutDashboard, LogOut, ChevronRight, FileStack } from "lucide-react";
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { LayoutDashboard, LogOut, ChevronRight, FileStack, Award, Folder } from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -15,8 +15,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "@/components/ui/sidebar";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/sidebar"
+import { cn } from "@/lib/utils"
 
 const navItems = [
   {
@@ -29,29 +29,37 @@ const navItems = [
     icon: FileStack,
     href: "/admin/carousel",
   },
-];
+  {
+    label: "Categories",
+    icon: Folder,
+    href: "/admin/categories",
+  },
+  {
+    label: "Certificates",
+    icon: Award,
+    href: "/admin/certificates",
+  },
+]
 
 export function AppSidebar() {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   return (
     <Sidebar className="border-r bg-white dark:bg-gray-900">
       <SidebarHeader className="p-4 flex items-center justify-center">
         <Link href={"/"} className="text-black text-lg font-bold">
-          Supplier Fruit
+          Portfolio Admin
         </Link>
       </SidebarHeader>
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-blue-600 font-medium px-4">
-            Menu
-          </SidebarGroupLabel>
+          <SidebarGroupLabel className="text-blue-600 font-medium px-4">Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {navItems.map((item) => {
-                const Icon = item.icon;
-                const isActive = pathname === item.href;
+                const Icon = item.icon
+                const isActive = pathname === item.href || pathname.startsWith(item.href + "/")
 
                 return (
                   <SidebarMenuItem key={item.href}>
@@ -60,27 +68,22 @@ export function AppSidebar() {
                       isActive={isActive}
                       className={cn(
                         "transition-colors py-3",
-                        isActive
-                          ? "bg-blue-50 text-blue-600 border-l-4 border-blue-600"
-                          : "hover:bg-gray-100"
-                      )}>
+                        isActive ? "bg-blue-50 text-blue-600 border-l-4 border-blue-600" : "hover:bg-gray-100",
+                      )}
+                    >
                       <Link href={item.href} className="flex items-center px-4">
                         <Icon
                           className={cn(
                             "h-5 w-5",
-                            isActive
-                              ? "text-blue-600 dark:text-blue-400"
-                              : "text-gray-500 dark:text-gray-400"
+                            isActive ? "text-blue-600 dark:text-blue-400" : "text-gray-500 dark:text-gray-400",
                           )}
                         />
                         <span className="ml-3 font-medium">{item.label}</span>
-                        {isActive && (
-                          <ChevronRight className="h-4 w-4 ml-auto text-blue-600 dark:text-blue-400" />
-                        )}
+                        {isActive && <ChevronRight className="h-4 w-4 ml-auto text-blue-600 dark:text-blue-400" />}
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
-                );
+                )
               })}
             </SidebarMenu>
           </SidebarGroupContent>
@@ -90,14 +93,10 @@ export function AppSidebar() {
       <SidebarFooter className="border-t">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton
-              asChild
-              className="py-3 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
-              <Link
-                href="/auth/signout"
-                className="flex items-center px-4 text-red-600 dark:text-red-400">
+            <SidebarMenuButton asChild className="py-3 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+              <Link href="/api/auth/signout" className="flex items-center px-4 text-red-600 dark:text-red-400">
                 <LogOut className="h-5 w-5" />
-                <span className="ml-3 font-medium">Keluar</span>
+                <span className="ml-3 font-medium">Sign Out</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -106,5 +105,5 @@ export function AppSidebar() {
 
       <SidebarRail className="bg-gray-50 dark:bg-gray-800" />
     </Sidebar>
-  );
+  )
 }
