@@ -45,8 +45,8 @@ export default function Footer() {
               <p>Jean Richnerd Rantabaratrahjaga</p>
               <p>Malang, Jawa Timur</p>
               <p className="pt-2">
-                <a href="https://wa.me/6285106655664" className="hover:text-white transition-colors">
-                  +62 851 0665 5664
+                <a href="https://wa.me/6281235667629" className="hover:text-white transition-colors">
+                  +62 812 3566 7629
                 </a>
               </p>
             </address>

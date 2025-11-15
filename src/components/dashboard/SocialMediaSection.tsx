@@ -8,8 +8,7 @@ import { SOCIAL_LINKS } from "../constants/data";
 
 const SocialMediaSection = memo(() => {
   return (
-    <section className="w-full py-12 sm:py-16 relative bg-blend-overlay">
-
+    <section id="social-media" className="w-full py-12 sm:py-16 relative bg-blend-overlay">
       <div className="relative container mx-auto px-4 sm:px-6 text-center max-w-2xl">
         <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-8 text-white">
           Temukan Saya di Media Sosial

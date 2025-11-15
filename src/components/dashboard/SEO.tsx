@@ -17,7 +17,7 @@ const SEO = memo(({
   description = "Seorang Fullstack Developer dari SMK Telkom Malang. Memulai perjalanan sebagai developer di MokletDev, aktif membangun aplikasi dengan fokus pada performa dan skalabilitas.",
   keywords = "fullstack developer, web developer, react developer, node.js, javascript, typescript, portfolio, SMK Telkom Malang, MokletDev",
   ogImage = "/img/baratrahjaga.jpg",
-  ogUrl = "https://yoursite.com",
+  ogUrl = "https://baratrahjaga.moklet.org",
   twitterHandle = "@baratrahjaga",
   structuredData,
 }: SEOProps) => {

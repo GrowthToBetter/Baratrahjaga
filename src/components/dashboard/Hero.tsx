@@ -24,6 +24,12 @@ const PortfolioSection = lazy(() =>
   })),
 )
 
+const SocialMediaSection = lazy(() =>
+  import("@/components/dashboard/SocialMediaSection").then((module) => ({
+    default: module.default,
+  })),
+)
+
 // Memoized Error Component
 const ErrorMessage = memo(
   ({
@@ -33,7 +39,7 @@ const ErrorMessage = memo(
   }: {
     message: string
     onRetry: () => void
-    type?: "general" | "carousel" | "portfolio"
+    type?: "general" | "carousel" | "portfolio" | "social"
   }) => {
     const errorConfig = useMemo(
       () => ({
@@ -60,6 +66,14 @@ const ErrorMessage = memo(
           textColor: "text-yellow-400",
           descColor: "text-yellow-300",
           buttonColor: "bg-yellow-600 hover:bg-yellow-700",
+        },
+        social: {
+          title: "Social Media Links Unavailable",
+          bgColor: "bg-blue-900/20",
+          borderColor: "border-blue-500",
+          textColor: "text-blue-400",
+          descColor: "text-blue-300",
+          buttonColor: "bg-blue-600 hover:bg-blue-700",
         },
       }),
       [],
@@ -168,6 +182,7 @@ export default function Home({
   // State for error handling and retry mechanism
   const [carouselError, setCarouselError] = useState<string | null>(null)
   const [portfolioError, setPortfolioError] = useState<string | null>(null)
+  const [socialMediaError, setSocialMediaError] = useState<string | null>(null)
   const [showDataWarning, setShowDataWarning] = useState(false)
   const [isRetrying, setIsRetrying] = useState(false)
 
@@ -179,8 +194,8 @@ export default function Home({
         "Portofolio profesional Jean Richnerd Rantabaratrahjaga, Fullstack Developer dari SMK Telkom Malang. Spesialisasi dalam React, Node.js, dan pengembangan aplikasi web modern.",
       keywords:
         "jean richnerd, baratrahjaga, fullstack developer, web developer, react, nodejs, portfolio, smk telkom malang, mokletdev",
-      ogUrl: "https://baratrahjaga.dev",
-      ogImage: "/img/baratrahjaga-og.jpg",
+      ogUrl: "https://baratrahjaga.moklet.org",
+      ogImage: "/img/baratrahjaga.jpg",
     }),
     [],
   )
@@ -201,7 +216,7 @@ export default function Home({
   }, [carousel, portfolio])
 
   // Retry mechanism
-  const handleRetry = useCallback(async (section: "carousel" | "portfolio") => {
+  const handleRetry = useCallback(async (section: "carousel" | "portfolio" | "social") => {
     setIsRetrying(true)
 
     try {
@@ -210,8 +225,10 @@ export default function Home({
 
       if (section === "carousel") {
         setCarouselError(null)
-      } else {
+      } else if (section === "portfolio") {
         setPortfolioError(null)
+      } else if (section === "social") {
+        setSocialMediaError(null)
       }
 
       // You can add actual retry logic here if needed
@@ -230,6 +247,10 @@ export default function Home({
 
   const handlePortfolioError = useCallback(() => {
     setPortfolioError("Failed to load portfolio projects. Please try again later.")
+  }, [])
+  
+  const handleSocialMediaError = useCallback(() => {
+    setSocialMediaError("Failed to load social media links. Please try again later.")
   }, [])
 
   return (
@@ -286,6 +307,25 @@ export default function Home({
               }
             >
               <PortfolioSection projects={validatedPortfolio} />
+            </ErrorBoundary>
+          )}
+        </Suspense>
+
+        {/* Social Media Section with Error Handling */}
+        <Suspense fallback={<EnhancedSectionLoader />}>
+          {socialMediaError ? (
+            <ErrorMessage message={socialMediaError} onRetry={() => handleRetry("social")} type="social" />
+          ) : (
+            <ErrorBoundary
+              fallback={
+                <ErrorMessage
+                  message="Social media links temporarily unavailable"
+                  onRetry={handleSocialMediaError}
+                  type="social"
+                />
+              }
+            >
+              <SocialMediaSection />
             </ErrorBoundary>
           )}
         </Suspense>

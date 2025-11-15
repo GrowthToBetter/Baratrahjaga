@@ -84,12 +84,12 @@ export default function HeroSection() {
 
             <Card className="bg-white/[0.02] border-white/10 backdrop-blur-sm p-6">
               <div className="text-white/60 text-sm font-medium mb-2">Contact</div>
-              <a
-                href="mailto:baratrahjaga@email.com"
-                className="text-white hover:text-white/80 text-sm underline underline-offset-4"
+              <button
+                onClick={() => scrollToSection("social-media")}
+                className="text-white hover:text-white/80 text-sm underline underline-offset-4 cursor-pointer bg-transparent border-none p-0 text-left"
               >
                 Get in touch
-              </a>
+              </button>
             </Card>
           </div>
         </div>
